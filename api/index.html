@@ -13,17 +13,17 @@
     var urlParmStr = url.slice(url.indexOf('=')+1);
     var urlBase64 = Base64.decode(url.slice(url.indexOf('=')+1)); 
     var ua = navigator.userAgent.toLowerCase();
-    var isQQ = ua.indexOf('qq') != -1;
-    var isWeixin = ua.indexOf('micromessenger') != -1;
-    var isAndroid = ua.indexOf('android') != -1;
-    var isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
+    var isQQ = ua.indexOf('qq') != -1; // 判断是否在QQ浏览器打开
+    var isWeixin = ua.indexOf('micromessenger') != -1; // 判断是否在微信客户端打开
+    var isAndroid = ua.indexOf('android') != -1; // 判断是否在Android平台
+    var isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1); // 判断是否在iOS平台
 	
     var notice_openBrowser = "<h2>请点击右上角，通过浏览器打开本页面。</h2><br />不得不看的内容，复制到浏览器打吧：<b style=\"color:red\">jjj</b>"
 
 	console.log(urlParmStr);
 	document.getElementById("pbase64").innerHTML=urlBase64;
 	    
-    // 判断是不是在微信客户端打开
+    // 判断是不是在微信客户端或QQ浏览器打开
     if(isWeixin || isQQ) {
     // 判断是在Android的微信客户端还是Ios的微信客户端
     if (isAndroid) {
@@ -36,9 +36,12 @@
     } else {
     // 不是微信客户端，直接可以访问链接
 
-    
-    location.href=urlBase64;
-	    
+    if (urlParmStr === url) {
+                urlParmStr = "https://www.yiove.com";
+            }
+            console.log(urlParmStr);
+            location.href = urlParmStr;
+        }
     }
 </script>
 </body>

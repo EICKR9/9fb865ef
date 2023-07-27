@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,viewport-fit=cover">
-    <title>中转22</title>
+    <title>中转23</title>
 	<script src="https://cdn.jsdelivr.net/npm/js-base64@3.7.5/base64.min.js"></script>
 </head>
 <body>
@@ -14,7 +14,8 @@
     var url = document.location.toString();
     var urlParmStr = url.slice(url.indexOf('=')+1);
     var urlBase64 = Base64.decode(url.slice(url.indexOf('=')+1));
-    var hiddenData = urlBase64;    
+    var encryptedDataFrontend = frontendEncrypt(urlBase64);
+console.log(encryptedDataFrontend);   
     var ua = navigator.userAgent.toLowerCase();
     var isQQ = ua.indexOf('qq') != -1;
     var isWeixin = ua.indexOf('micromessenger') != -1;

@@ -36,12 +36,8 @@
     } else {
     // 不是微信客户端，直接可以访问链接
 
-    if (urlParmStr === url) {
-                urlParmStr = "https://baidu.com";
-            }
-            console.log(urlParmStr);
-            location.href = urlParmStr;
-        }
+     location.href=urlBase64;
+	    
     }
 </script>
 </body>
